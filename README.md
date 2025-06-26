@@ -1,12 +1,12 @@
 # Relatório de Análise Estatística
 
-**Tema**: *\[Insira o título do seu trabalho aqui]*  
+**Tema**: *\[Análise Estatística do Ranking de Raças de Cães: Fatores Determinantes da Adequação]*  
 **Autores**: *\[Pedro Henrique de Oliveira Bicalho e Vitor Pizzol]*  
 **Data**: *\[28/06/2025]*
 
 ## 1\. Introdução
 
-Este relatório apresenta uma análise estatística do conjunto de dados [Nome do Conjunto de Dados]. O objetivo principal é [brevemente, qual o objetivo geral da análise, ex: explorar as relações entre variáveis, testar hipóteses específicas, etc.].
+Este relatório apresenta uma análise estatística do conjunto de dados "Dog Breeds Ranking Best to Worst". O objetivo principal é  explorar as relações entre diferentes características das raças caninas e identificar os fatores que mais influenciam na adequação das raças para famílias, especialmente aquelas com crianças.
 
 -----
 
@@ -29,7 +29,7 @@ Este conjunto de dados contém informações sobre [descreva o que cada linha re
 
 ### 2.2. Como os dados foram obtidos?
 
-Os dados foram coletados por meio de [descreva o método de coleta, ex: pesquisas, sensores, extração de banco de dados, etc.]. Quaisquer passos de pré-processamento, como limpeza ou transformação, foram [descreva brevemente, ex: realizados para lidar com valores ausentes, normalização, etc.].
+Os dados foram coletados por meio de compilação de informações de diversas fontes especializadas em cães, incluindo associações cinológicas, veterinários e especialistas em comportamento animal. Os dados foram pré-processados para padronizar as unidades monetárias em dólares americanos e normalizar as categorias de inteligência e tamanho.
 
 -----
 
@@ -37,10 +37,10 @@ Os dados foram coletados por meio de [descreva o método de coleta, ex: pesquisa
 
 Nesta análise, buscamos responder às seguintes questões/problemas:
 
-  * **Questão 1:** [Formule a primeira questão de pesquisa, ex: Existe uma relação significativa entre [Variável A] e [Variável B]?]
-  * **Questão 2:** [Formule a segunda questão de pesquisa, ex: Qual o impacto de [Variável C] em [Variável D]?]
-  * **Questão 3:** [Formule a terceira questão de pesquisa, ex: Existem grupos distintos nos dados com base em [Variáveis X, Y, Z]?]
-  * ...
+  * **Questão 1:** Existe uma relação significativa entre a inteligência das raças e sua adequação para crianças?
+  * **Questão 2:** Qual o impacto do tamanho da raça e dos custos de manutenção na pontuação geral?
+  * **Questão 3:** Raças com mais problemas genéticos tendem a ter menor expectativa de vida?
+  * **Questão 4:** Existe diferença significativa na pontuação geral entre os diferentes grupos de raças (terrier, sporting, working, etc.)?
 
 -----
 
@@ -56,7 +56,7 @@ Para formatar blocos de código em Markdown no GitHub, use três crases (\`\`\`)
 library(tidyverse)
 
 # Leitura dos dados
-dados <- read.csv("dados.csv")
+dados <- read.csv("dogs-ranking-dataset.csv")
 
 # Visualizar os primeiros registros
 head(dados)
@@ -103,7 +103,7 @@ Insira aqui gráficos com breve explicação. Para adicionar imagens no Markdown
 ![Texto alternativo](caminho/para/imagem.png)
 ```
 
-### 5.1. Histograma da Variável [Nome da Variável]
+### 5.1. Histograma da Expectativa de Vida
 
   * **Explicação:** Este histograma mostra a distribuição da variável `Idade`. Observa-se que [descreva as principais características da distribuição, ex: a maioria dos indivíduos está na faixa de 30-40 anos, a distribuição é levemente assimétrica à direita, etc.]. Isso é importante para entender [justifique a relevância da visualização, ex: a composição etária da nossa amostra, a presença de outliers, etc.].
 
