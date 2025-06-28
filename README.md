@@ -12,7 +12,7 @@ Este relatório apresenta uma análise estatística abrangente do dataset "Dogs 
 
 * Fonte dos dados: [Link para o dataset](https://www.kaggle.com/datasets/jainaru/dog-breeds-ranking-best-to-worst?resource=download)
 * Número de observações (linhas): `87`
-* Número de variáveis (colunas): `18`
+* Número de variáveis (colunas): `17`
 
 ### 2.1. O que representam os dados?
 
