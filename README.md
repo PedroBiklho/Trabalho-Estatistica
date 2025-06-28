@@ -7,7 +7,6 @@
 ## 1\. Introdução
 
 Este relatório apresenta uma análise estatística abrangente do dataset "Dogs Ranking", que contém informações detalhadas sobre diferentes raças de cães e suas características. O objetivo é aplicar conceitos de probabilidade e estatística para extrair insights significativos sobre as raças caninas, seus custos, inteligência, adequação para famílias e características físicas.
------
 
 ## 2\. Descrição do Conjunto de Dados
 
@@ -183,15 +182,15 @@ Insira aqui gráficos com breve explicação. Para adicionar imagens no Markdown
 
 ### 5.1. Histograma da Expectativa de Vida
 
-  * **Explicação:** Este histograma mostra a distribuição da variável `Idade`. Observa-se que [descreva as principais características da distribuição, ex: a maioria dos indivíduos está na faixa de 30-40 anos, a distribuição é levemente assimétrica à direita, etc.]. Isso é importante para entender [justifique a relevância da visualização, ex: a composição etária da nossa amostra, a presença de outliers, etc.].
+  * **Explicação:** Este histograma mostra a distribuição da variável `Longevity(Years)`.Observa-se que a maioria das raças tem expectativa de vida entre 10-13 anos, com uma distribuição aproximadamente normal e ligeiramente assimétrica à esquerda. Isso é importante para entender o perfil de longevidade das diferentes raças caninas e pode auxiliar futuros proprietários na escolha da raça.
 
 ### 5.2. Gráfico de Dispersão entre [Variável X] e [Variável Y]
 
-  * **Explicação:** O gráfico de dispersão acima ilustra a relação entre as variáveis `Variável X` e `Variável Y`. É possível observar [descreva a tendência, ex: uma correlação positiva, negativa, ausência de correlação, agrupamentos, etc.]. Esta visualização auxilia na [justifique a relevância, ex: identificação de padrões, detecção de relações lineares ou não lineares, etc.].
+  * **Explicação:** O gráfico de dispersão acima ilustra a relação entre as variáveis `Intelligence %` e `Score for kids`. É possível observar uma correlação positiva moderada, sugerindo que raças mais inteligentes tendem a ser mais adequadas para crianças. Esta visualização auxilia na identificação de raças que combinam alta inteligência com boa compatibilidade familiar.
 
 ### 5.3. Gráfico de Barras da Variável Categórica [Nome da Variável]
 
-  * **Explicação:** Este gráfico de barras apresenta a frequência de cada categoria da variável `Região`. [Descreva o que o gráfico mostra, ex: a maioria dos dados pertence à "Região Sul", enquanto a "Região Norte" possui a menor representatividade]. Essa visualização é crucial para [justifique a relevância, ex: entender a distribuição das categorias, identificar desequilíbrios na amostra, etc.].
+  * **Explicação:** Este gráfico de barras apresenta a frequência de cada grupo de raças no dataset. O grupo "sporting" possui a maior representatividade, seguido por "terrier" e "toy". Essa visualização é crucial para entender a distribuição das categorias e identificar possíveis desequilíbrios na amostra que podem afetar as análises estatísticas.
 
 -----
 
@@ -199,39 +198,38 @@ Insira aqui gráficos com breve explicação. Para adicionar imagens no Markdown
 
 ### 6.1. Medidas de Tendência Central (Média, Mediana, Moda)
 
-  * **Média:** Utilizada para [justifique a escolha, ex: fornecer uma visão geral do valor "típico" em distribuições aproximadamente simétricas, pois é sensível a valores extremos].
-  * **Mediana:** Empregada para [justifique a escolha, ex: representar o valor central em distribuições assimétricas ou com outliers, pois não é afetada por valores extremos].
-  * **Moda:** Aplicada para [justifique a escolha, ex: identificar o valor mais frequente em variáveis categóricas ou discretas, sendo útil para entender a categoria mais comum].
+  * **Média:** Utilizada para fornecer uma visão geral dos valores típicos de pontuação, custos e expectativa de vida, sendo apropriada para variáveis numéricas com distribuição aproximadamente normal.
+  * **Mediana:** Empregada para representar o valor central em variáveis como custo de vida e preço de compra, que podem apresentar outliers e distribuições assimétricas.
+  * **Moda:** Aplicada para identificar os grupos de raças mais comuns, níveis de inteligência predominantes e categorias de tamanho mais frequentes no dataset.
 
 ### 6.2. Medidas de Dispersão (Desvio Padrão, Amplitude, Intervalo Interquartil - IQR)
 
-  * **Desvio Padrão:** Escolhido para [justifique a escolha, ex: quantificar a dispersão dos dados em relação à média, sendo útil em distribuições normais ou aproximadamente normais].
-  * **Amplitude:** Utilizada para [justifique a escolha, ex: fornecer uma medida rápida da variação total dos dados, indicando a diferença entre o valor máximo e mínimo].
-  * **Intervalo Interquartil (IQR):** Aplicado para [justifique a escolha, ex: medir a dispersão dos 50% centrais dos dados, sendo robusto a outliers e útil em distribuições assimétricas].
+  * **Desvio Padrão:** Escolhido para quantificar a variabilidade nas pontuações e percentuais de inteligência, permitindo entender a homogeneidade ou heterogeneidade entre as raças.
+  * **Amplitude:** Utilizada para fornecer uma visão rápida da variação nos custos de manutenção e expectativa de vida entre as raças.
+  * **Intervalo Interquartil (IQR):** Aplicado para medir a dispersão dos custos e pontuações, sendo robusto a valores extremos que podem existir em algumas raças muito caras ou com características únicas.
 
 ### 6.3. Medidas de Posição (Quartis, Percentis)
 
-  * **Quartis/Percentis:** Empregados para [justifique a escolha, ex: dividir os dados em partes iguais, permitindo analisar a distribuição e identificar a posição relativa de valores, útil para identificar outliers e entender a cauda da distribuição].
+  * **Quartis/Percentis:** Empregados para categorizar as raças em diferentes níveis de adequação, custos e inteligência, permitindo identificar as raças que estão nos percentis superiores e inferiores de cada característica.
 
 ### 6.4. Medidas de Associação (Coeficiente de Correlação de Pearson/Spearman)
 
-  * **Coeficiente de Correlação de Pearson:** Utilizado para [justifique a escolha, ex: medir a força e direção de uma relação linear entre duas variáveis numéricas, assumindo normalidade].
-  * **Coeficiente de Correlação de Spearman:** Empregado para [justifique a escolha, ex: medir a força e direção de uma relação monotônica entre duas variáveis, sem assumir normalidade, sendo robusto a outliers e útil para dados ordinais].
-
+  * **Coeficiente de Correlação de Pearson:** Utilizado para medir a relação linear entre variáveis numéricas como inteligência e adequação para crianças, assumindo distribuição normal.
+  * **Coeficiente de Correlação de Spearman:** Empregado para medir relações monotônicas entre variáveis ordinais como ranking de popularidade e outros fatores, sendo mais robusto a outliers.
 -----
 
 ## 7\. Testes Estatísticos Utilizados
 
-### 7.1. Teste [Nome do Teste, ex: Teste t de Student para duas amostras independentes]
+### 7.1. Teste de Correlação de Pearson
 
-  * **Objetivo:** [Descreva o objetivo do teste, ex: Comparar as médias de duas amostras independentes para determinar se há uma diferença estatisticamente significativa entre elas.]
+  * **Objetivo:** Avaliar se existe correlação significativa entre o percentual de inteligência e a pontuação para adequação com crianças.
   * **Hipóteses:**
-      * **H0 (Hipótese Nula):** [Descreva a hipótese nula, ex: Não há diferença significativa entre as médias dos grupos.]
-      * **H1 (Hipótese Alternativa):** [Descreva a hipótese alternativa, ex: Há uma diferença significativa entre as médias dos grupos.]
+      * **H0 (Hipótese Nula):**  Não há correlação significativa entre inteligência e adequação para crianças (ρ = 0).
+      * **H1 (Hipótese Alternativa):** Há correlação significativa entre inteligência e adequação para crianças (ρ ≠ 0).
   * **Resultado:**
     ```
     # Código R do teste
-    t.test(dados$VariávelNumérica ~ dados$VariávelCategórica, data = dados)
+   cor.test(dados$INTELLIGENCE.PCT, dados$score.for.kids)
     ```
       * **P-valor:** [Valor do p-valor]
       * **Interpretação:** [Com base no p-valor e nível de significância, ex: Com um p-valor de [X] e um nível de significância de 0.05, rejeitamos/não rejeitamos a hipótese nula. Isso indica que há/não há evidências suficientes para afirmar uma diferença significativa entre as médias dos grupos.]
