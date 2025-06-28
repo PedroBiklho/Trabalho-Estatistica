@@ -6,14 +6,13 @@
 
 ## 1\. Introdução
 
-Este relatório apresenta uma análise estatística do conjunto de dados "Dog Breeds Ranking Best to Worst". O objetivo principal é  explorar as relações entre diferentes características das raças caninas e identificar os fatores que mais influenciam na adequação das raças para famílias, especialmente aquelas com crianças.
-
+Este relatório apresenta uma análise estatística abrangente do dataset "Dogs Ranking", que contém informações detalhadas sobre diferentes raças de cães e suas características. O objetivo é aplicar conceitos de probabilidade e estatística para extrair insights significativos sobre as raças caninas, seus custos, inteligência, adequação para famílias e características físicas.
 -----
 
 ## 2\. Descrição do Conjunto de Dados
 
 * Fonte dos dados: [Link para o dataset](https://www.kaggle.com/datasets/jainaru/dog-breeds-ranking-best-to-worst?resource=download)
-* Número de observações (linhas): `88`
+* Número de observações (linhas): `87`
 * Número de variáveis (colunas): `18`
 
 ### 2.1. O que representam os dados?
@@ -22,10 +21,11 @@ Este conjunto de dados contém informações sobre [descreva o que cada linha re
 
 | Coluna | Descrição | Tipo de Dado | Exemplo |
 |---|---|---|---|
-| `[Nome da Coluna 1]` | [Explicação detalhada da coluna 1] | [Ex: Numérico, Categórico, Data] | [Ex: 12.5, "Masculino", "2023-01-15"] |
-| `[Nome da Coluna 2]` | [Explicação detalhada da coluna 2] | [Ex: Numérico, Categórico, Data] | [Ex: 100, "Solteiro", "2024-03-20"] |
-| `[Nome da Coluna 3]` | [Explicação detalhada da coluna 3] | [Ex: Numérico, Categórico, Data] | [Ex: 75000, "Região Norte", "2025-06-01"] |
-| ... | ... | ... | ... |
+| `Breed` | Nome da Raça do Cão | Categórico | "Border Terrier" |
+| `Intelligence` | Nível de Inteligência | Categórico | Above average |
+| `Score for kids` | Pontuação de adequação com crianças | Numérico | 4.99 |
+| `Lifetime cost` | Custo de vida estimado | Numérico | "$22,638" |
+| `Longevity` | Expectativa de vida em anos | Numérico | 14 |
 
 ### 2.2. Como os dados foram obtidos?
 
@@ -48,52 +48,130 @@ Nesta análise, buscamos responder às seguintes questões/problemas:
 
 Todos os códigos para esta análise foram desenvolvidos em **R**.
 
-Todos os códigos em R usados na análise estão incluídos abaixo.
-Para formatar blocos de código em Markdown no GitHub, use três crases (\`\`\`) seguidas da linguagem (`r` para R):
+### 4.1 Carregamento de Biblioteca e Dados
 
 ```r
-# Carregar pacotes
-library(tidyverse)
 
-# Leitura dos dados
-dados <- read.csv("dogs-ranking-dataset.csv")
-
-# Visualizar os primeiros registros
-head(dados)
-```
-
-```r
-# Carregando pacotes necessários
-library(ggplot2)
+# Carregamento das bibliotecas necessárias
+library(readr)
 library(dplyr)
-library(knitr) # Para tabelas bonitas
-library(Tidyverse) # Pacote para manipulação de dados
-library(stats) # Para funções estatísticas
+library(ggplot2)
+library(corrplot)
+library(tidyr)
 
-# Exemplo de carregamento de dados
-dados <- read.csv("dados_exemplo.csv")
+# Carregamento dos dados
+df <- read_csv("dogs-ranking-dataset.csv")
 
-# Exemplo de visualização das primeiras linhas do dataframe
-head(dados)
+# Visualização inicial dos dados
+head(df)
+str(df)
+```
 
-# Exemplo de cálculo de estatísticas descritivas
-summary(dados$ColunaNumerica)
+### 4.2 Medidas de Tendência Central
+#### Média 
 
-# Exemplo de um gráfico de dispersão
-ggplot(dados, aes(x = ColunaX, y = ColunaY)) +
-  geom_point() +
-  labs(title = "Gráfico de Dispersão de X vs Y",
-       x = "Eixo X",
-       y = "Eixo Y") +
-  theme_minimal()
+```r
+# Média das variáveis numéricas
+media_score_kids <- mean(df$`score for kids`, na.rm = TRUE)
+media_longevity <- mean(df$`LONGEVITY(YEARS)`, na.rm = TRUE)
 
-# Exemplo de teste t
-t_test_resultado <- t.test(dados$GrupoA, dados$GrupoB)
-print(t_test_resultado)
+# Tratamento da coluna de custo (remover $ e vírgulas)
+df$lifetime_cost_clean <- as.numeric(gsub("[,$]", "", df$`LIFETIME COST`))
+media_lifetime_cost <- mean(df$lifetime_cost_clean, na.rm = TRUE)
+
+cat("Média Score for Kids:", round(media_score_kids, 2), "\n")
+cat("Média Longevidade:", round(media_longevity, 2), "anos\n")
+cat("Média Custo de Vida: $", round(media_lifetime_cost, 2), "\n")
 
 ```
 
------
+#### Mediana 
+
+```r 
+# Mediana das variáveis numéricas
+mediana_score_kids <- median(df$`score for kids`, na.rm = TRUE)
+mediana_longevity <- median(df$`LONGEVITY(YEARS)`, na.rm = TRUE)
+mediana_lifetime_cost <- median(df$lifetime_cost_clean, na.rm = TRUE)
+
+cat("Mediana Score for Kids:", mediana_score_kids, "\n")
+cat("Mediana Longevidade:", mediana_longevity, "anos\n")
+cat("Mediana Custo de Vida: $", mediana_lifetime_cost, "\n")
+
+```
+
+#### Moda
+
+```r
+# Função para calcular moda
+calcular_moda <- function(x) {
+  ux <- unique(x)
+  ux[which.max(tabulate(match(x, ux)))]
+}
+
+# Moda das variáveis
+moda_intelligence <- calcular_moda(df$intelligence)
+moda_score_kids <- calcular_moda(df$`score for kids`)
+moda_longevity <- calcular_moda(df$`LONGEVITY(YEARS)`)
+
+cat("Moda Inteligência:", moda_intelligence, "\n")
+cat("Moda Score for Kids:", moda_score_kids, "\n")
+cat("Moda Longevidade:", moda_longevity, "anos\n")
+
+```
+
+### 4.3 Medidas de Dispersão
+
+```r
+
+# Desvio padrão
+std_score_kids <- sd(df$`score for kids`, na.rm = TRUE)
+std_longevity <- sd(df$`LONGEVITY(YEARS)`, na.rm = TRUE)
+
+# Variância
+var_score_kids <- var(df$`score for kids`, na.rm = TRUE)
+var_longevity <- var(df$`LONGEVITY(YEARS)`, na.rm = TRUE)
+
+cat("Desvio Padrão Score for Kids:", round(std_score_kids, 2), "\n")
+cat("Variância Longevidade:", round(var_longevity, 2), "\n")
+
+```
+### 4.4 Análise de Correlação 
+
+```r
+# Seleção de variáveis numéricas para correlação
+numeric_vars <- df %>% 
+  select(`score for kids`, `LONGEVITY(YEARS)`, `INTELLIGENCE %`) %>%
+  na.omit()
+
+# Matriz de correlação
+correlation_matrix <- cor(numeric_vars)
+print(correlation_matrix)
+
+# Coeficiente de correlação específico
+corr_score_longevity <- cor(df$`score for kids`, df$`LONGEVITY(YEARS)`, use = "complete.obs")
+cat("Correlação Score-Longevidade:", round(corr_score_longevity, 3), "\n")
+
+```
+### 4.5 Análise Descritiva Completa 
+
+```r 
+
+# Estatísticas descritivas
+desc_stats <- df %>% 
+  select(`score for kids`, `LONGEVITY(YEARS)`) %>%
+  summary()
+print(desc_stats)
+
+# Quartis e IQR
+q1_score <- quantile(df$`score for kids`, 0.25, na.rm = TRUE)
+q3_score <- quantile(df$`score for kids`, 0.75, na.rm = TRUE)
+iqr_score <- q3_score - q1_score
+
+cat("Q1 Score for Kids:", q1_score, "\n")
+cat("Q3 Score for Kids:", q3_score, "\n")
+cat("IQR Score for Kids:", round(iqr_score, 2), "\n")
+
+```
 
 ## 5\. Figuras Geradas e Explicações
 
@@ -224,39 +302,5 @@ Para trabalhos futuros, sugerimos:
   * [Documentação do Pacote ggplot2](https://ggplot2.tidyverse.org/)
   * [Guia de Markdown para GitHub](https://docs.github.com/pt/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
 
------
 
-### Dicas de Formatação Markdown para GitHub:
 
-  * **Títulos:** Use `#` para o título principal, `##` para subtítulos, `###` para sub-subtítulos, e assim por diante.
-  * **Texto em negrito:** Use `**texto**` ou `__texto__`.
-  * **Texto em itálico:** Use `*texto*` ou `_texto_`.
-  * **Listas não ordenadas:** Use `*` ou `-` seguido de um espaço.
-    ```markdown
-    * Item 1
-    * Item 2
-        * Subitem 2.1
-    ```
-  * **Listas ordenadas:** Use números seguidos de um ponto e um espaço.
-    ```markdown
-    1. Primeiro item
-    2. Segundo item
-    ```
-  * **Blocos de código:** Use três crases (\`\`\`\`\`) antes e depois do seu bloco de código e especifique a linguagem para destaque de sintaxe.
-    ````markdown
-    ```R
-    # Seu código R aqui
-    print("Olá Mundo!")
-    ```
-    ````
-  * **Código inline:** Use uma crase (`` ` ``) ao redor do texto. Exemplo: `print("Olá")`.
-  * **Links:** Use `[Texto do link](URL do link)`. Exemplo: `[Google](https://www.google.com)`.
-  * **Imagens:** Use `![Texto alternativo da imagem](URL da imagem)`. Para imagens locais no seu repositório GitHub, use caminhos relativos: `![Gráfico](img/grafico1.png)`.
-  * **Tabelas:** Use `|` para separar colunas e `-` para a linha de cabeçalho.
-    ```markdown
-    | Cabeçalho 1 | Cabeçalho 2 |
-    |---|---|
-    | Linha 1 Coluna 1 | Linha 1 Coluna 2 |
-    | Linha 2 Coluna 1 | Linha 2 Coluna 2 |
-    ```
-  * **Linhas horizontais:** Use três ou mais hifens (`---`), asteriscos (`***`) ou underscores (`___`) em uma linha separada.
