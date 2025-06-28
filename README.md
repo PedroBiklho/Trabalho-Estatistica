@@ -1,8 +1,8 @@
 # Relatório de Análise Estatística
 
-**Tema**: *\[Análise Estatística do Ranking de Raças de Cães: Fatores Determinantes da Adequação]*  
-**Autores**: *\[Pedro Henrique de Oliveira Bicalho e Vitor Pizzol]*  
-**Data**: *\[28/06/2025]*
+**Tema**: *\Análise Estatística do Ranking de Raças de Cães: Fatores Determinantes da Adequação*  
+**Autores**: *\Pedro Henrique de Oliveira Bicalho e Vitor Hugo de Pizzol dos Santos*  
+**Data**: *\28/06/2025*
 
 ## 1\. Introdução
 
