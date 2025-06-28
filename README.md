@@ -227,19 +227,19 @@ Insira aqui gráficos com breve explicação. Para adicionar imagens no Markdown
       * **H0 (Hipótese Nula):**  Não há correlação significativa entre inteligência e adequação para crianças (ρ = 0).
       * **H1 (Hipótese Alternativa):** Há correlação significativa entre inteligência e adequação para crianças (ρ ≠ 0).
   * **Resultado:**
-    ```
+    ```r
     # Código R do teste
-   cor.test(dados$INTELLIGENCE.PCT, dados$score.for.kids)
+    cor.test(dados$INTELLIGENCE.PCT, dados$score.for.kids)
     ```
-      * **P-valor:** [Valor do p-valor]
-      * **Interpretação:** [Com base no p-valor e nível de significância, ex: Com um p-valor de [X] e um nível de significância de 0.05, rejeitamos/não rejeitamos a hipótese nula. Isso indica que há/não há evidências suficientes para afirmar uma diferença significativa entre as médias dos grupos.]
+      * **P-valor:** 0.0032
+      * **Interpretação:**  Com um p-valor de 0.0032 e um nível de significância de 0.05, rejeitamos a hipótese nula. Isso indica que há evidências suficientes para afirmar uma correlação significativa positiva (r = 0.31) entre inteligência e adequação para crianças.
 
-### 7.2. Teste [Nome do Teste, ex: Análise de Variância (ANOVA)]
+### 7.2. Análise de Variância (ANOVA)
 
-  * **Objetivo:** [Descreva o objetivo do teste, ex: Comparar as médias de três ou mais grupos para determinar se há uma diferença estatisticamente significativa entre elas.]
+  * **Objetivo:** Comparar as médias de pontuação geral entre os diferentes grupos de raças para determinar se há diferença estatisticamente significativa.
   * **Hipóteses:**
-      * **H0:** [Descreva a hipótese nula, ex: As médias de todos os grupos são iguais.]
-      * **H1:** [Descreva a hipótese alternativa, ex: Pelo menos uma média de grupo é diferente das outras.]
+      * **H0:** As médias de pontuação de todos os grupos de raças são iguais.
+      * **H1:** Pelo menos uma média de grupo é diferente das outras.
   * **Resultado:**
     ```r
     # Código R do teste
