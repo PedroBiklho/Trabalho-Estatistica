@@ -243,62 +243,84 @@ Insira aqui gráficos com breve explicação. Para adicionar imagens no Markdown
   * **Resultado:**
     ```r
     # Código R do teste
-    modelo_aov <- aov(VariávelResposta ~ Fator, data = dados)
-    summary(modelo_aov)
+    anova_result <- aov(score ~ type, data = dados)
+    summary(anova_result)
     ```
-      * **P-valor:** [Valor do p-valor]
-      * **Interpretação:** [Com base no p-valor, ex: Dado o p-valor de [X], menor que 0.05, rejeitamos a hipótese nula, indicando que existe uma diferença significativa entre as médias de pelo menos um grupo.]
+      * **P-valor:** 0.018
+      * **Interpretação:** Dado o p-valor de 0.018, menor que 0.05, rejeitamos a hipótese nula, indicando que existe uma diferença significativa na pontuação média entre pelo menos dois grupos de raças.
+
+### 7.3. Teste t para Duas Amostras Independentes
+
+  * **Objetivo:** Comparar a expectativa de vida média entre raças com problemas genéticos e raças sem problemas genéticos.
+  * **Hipóteses:**
+      * **H0:** Não há diferença significativa na expectativa de vida entre raças com e sem problemas genéticos.
+      * **H1:** Há diferença significativa na expectativa de vida entre os dois grupos.
+  * **Resultado:**
+    ```r
+    # Código R do teste
+    t.test(LONGEVITY.YEARS. ~ (NUMBER.OF.GENETIC.AILMENTS > 0), data = dados)
+    ```
+      * **P-valor:**0.041
+      * **Interpretação:** Com um p-valor de 0.041 e nível de significância de 0.05, rejeitamos a hipótese nula. Raças sem problemas genéticos apresentam expectativa de vida significativamente maior (média = 12.8 anos) comparado às raças com problemas genéticos (média = 11.9 anos).
 
 -----
 
 ## 8\. Análise e Discussão dos Resultados Obtidos
 
-Nesta seção, discuta os achados mais importantes da sua análise em relação às questões motivadoras. Não apenas reporte os números, mas interprete-os e conecte-os ao contexto do problema.
+Nesta seção, discutimos os achados mais importantes da análise em relação às questões motivadoras, interpretando os resultados e conectando-os ao contexto prático da escolha de raças caninas.
 
-  * **Para a Questão 1 ([Reformule a questão]):**
+  * **Para a Questão 1 (Relação entre inteligência e adequação para crianças):**
 
-      * [Apresente os principais achados relacionados a essa questão. Ex: Os resultados do teste t indicaram uma diferença estatisticamente significativa na média de [Variável Resposta] entre os grupos A e B (p \< 0.05). O Grupo A apresentou uma média [maior/menor] de [Valor] em comparação com o Grupo B, que teve uma média de [Valor].]
-      * [Discuta as implicações desses achados. Ex: Isso sugere que [implicação prática, ex: a intervenção X realmente teve um impacto positivo/negativo].]
+      * Os resultados do teste de correlação indicaram uma correlação positiva significativa (r = 0,31, p = 0,0032) entre o percentual de inteligência das raças e sua adequação para crianças. Raças mais inteligentes tendem a pontuar melhor na escala de adequação familiar.
+      * Isso sugere que a inteligência canina facilita o treinamento e a socialização com crianças, tornando essas raças mais seguras e adequadas para ambientes familiares.
 
-  * **Para a Questão 2 ([Reformule a questão]):**
+  * **Para a Questão 2 (Impacto do tamanho e custos na pontuação geral):**
 
-      * [Apresente os resultados dos modelos ou análises. Ex: O modelo de regressão linear múltipla revelou que [Variável Preditiva X] é um preditor significativo de [Variável Resposta] (coeficiente = [Valor], p \< 0.01), enquanto [Variável Preditiva Y] não se mostrou significativa.]
-      * [Discuta o significado prático e teórico desses achados. Ex: Este achado confirma que [ideia central] e pode ser usado para [aplicação prática].]
+      * A análise revelou que raças de tamanho médio apresentam as melhores pontuações gerais (média = 2,89), seguidas pelas pequenas (2,67) e grandes (2,21). O custo de manutenção mostrou correlação negativa moderada com a pontuação (r = -0,28).
+      * Este achado confirma que raças de porte médio oferecem um equilíbrio ideal entre manejabilidade e custo-benefício, sendo mais práticas para a maioria das famílias.
 
-  * **Para a Questão 3 ([Reformule a questão]):**
+  * **Para a Questão 3 (Problemas genéticos e expectativa de vida):**
 
-      * [Descreva os padrões ou agrupamentos encontrados. Ex: A análise exploratória de dados, como o gráfico de dispersão, sugeriu a existência de dois grupos distintos de dados, com diferentes comportamentos em relação às variáveis X e Y. Isso foi corroborado por [mencione outro teste ou análise se aplicável].]
-      * [Analise as possíveis razões para esses padrões. Ex: Acreditamos que esses grupos possam representar [explicação, ex: diferentes segmentos de clientes, condições experimentais distintas, etc.].]
+      * O teste t confirmou que raças sem problemas genéticos vivem significativamente mais (12,8 vs 11,9 anos, p = 0,041). Além disso, encontramos correlação negativa entre número de problemas genéticos e longevidade (r = -0,34).
+      * Acreditamos que este padrão reflete a importância da seleção genética responsável e pode orientar futuros proprietários na escolha de raças mais saudáveis.
+  
+  * **Para a Questão 4 (Diferenças entre grupos de raças):**
+
+      * A ANOVA revelou diferenças significativas na pontuação geral entre grupos (F = 2,18, p = 0,018). Raças "herding" apresentaram as maiores pontuações médias (2,95), enquanto raças "working" tiveram as menores (2,02).
+      * Isso sugere que raças desenvolvidas para pastoreio mantiveram características que as tornam mais adequadas como animais de companhia, enquanto raças de trabalho podem requerer cuidados mais especializados.
+
+
 
 -----
 
 ## 9\. Conclusão
 
-Este relatório explorou o conjunto de dados [Nome do Conjunto de Dados] com o objetivo de [reafirme o objetivo geral]. As principais descobertas incluem:
+Este relatório explorou o conjunto de dados "Dog Breeds Ranking Best to Worst" com o objetivo de identificar os fatores determinantes da adequação das raças caninas para famílias. As principais descobertas incluem:
 
-  * [Resumo do principal achado 1, ex: Houve uma diferença significativa em [Variável] entre os grupos A e B.]
-  * [Resumo do principal achado 2, ex: [Variável X] foi um preditor significativo de [Variável Y].]
-  * [Resumo do principal achado 3, ex: Foram identificados dois padrões distintos nos dados, sugerindo a presença de subgrupos.]
+  * Existe uma correlação positiva significativa entre inteligência e adequação para crianças (r = 0,31, p < 0,01).
+  * Raças de porte médio apresentam melhor equilíbrio entre pontuação geral e custos de manutenção.
+  * Raças sem problemas genéticos vivem aproximadamente 1 ano a mais que aquelas com problemas congênitos.
+  * Raças do grupo "herding" são significativamente mais bem pontuadas que outros grupos, especialmente "working".
 
-Esses resultados têm implicações para [mencione as implicações práticas ou teóricas, ex: a tomada de decisão em marketing, o desenvolvimento de novas políticas, a compreensão de um fenômeno, etc.].
+Esses resultados têm implicações importantes para a escolha responsável de animais de companhia, orientando famílias na seleção de raças que melhor se adequem ao seu perfil e necessidades.
 
 ### Limitações e Trabalhos Futuros
 
-É importante notar que [mencione quaisquer limitações da análise, ex: o tamanho da amostra, a ausência de algumas variáveis importantes, vieses nos dados, etc.].
+É importante notar as seguintes limitações: o dataset representa apenas 88 raças, pode haver vieses na fonte dos dados originais, e algumas variáveis apresentam valores ausentes que foram tratados por exclusão.
 
 Para trabalhos futuros, sugerimos:
 
-  * [Sugestão de pesquisa futura 1, ex: Coletar mais dados para aumentar a robustez das análises.]
-  * [Sugestão de pesquisa futura 2, ex: Explorar modelos mais complexos, como machine learning, para previsões mais precisas.]
-  * [Sugestão de pesquisa futura 3, ex: Realizar análises de sensibilidade para avaliar a robustez dos resultados a diferentes suposições.]
+  * Coletar dados de mais raças e incluir raças mistas para aumentar a representatividade.
+  * Explorar modelos de machine learning para previsão de adequação baseada em características físicas e comportamentais.
+  * Realizar análises longitudinais para avaliar mudanças nas características das raças ao longo do tempo devido à seleção artificial.
+  * Incluir variáveis ambientais e socioeconômicas dos proprietários para análises mais abrangentes.
 
 -----
 
 ## Referências / Links Úteis
 
-  * [Conjunto de Dados Original](https://www.google.com/search?q=https://example.com/link_para_dados)
+  * [Conjunto de Dados Original](https://www.kaggle.com/datasets/jainaru/dog-breeds-ranking-best-to-worst?resource=download)
   * [Documentação do Pacote ggplot2](https://ggplot2.tidyverse.org/)
   * [Guia de Markdown para GitHub](https://docs.github.com/pt/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
-
 
 
