@@ -175,9 +175,7 @@ cat("IQR Score for Kids:", round(iqr_score, 2), "\n")
 ## 5\. Figuras Geradas e Explicações
 
 
-```markdown
 ![Gráfico de Histograma](Histograma.png)
-```
 
 ### 5.1. Histograma da Expectativa de Vida
 
@@ -189,9 +187,7 @@ cat("IQR Score for Kids:", round(iqr_score, 2), "\n")
 
   * **Explicação:** O gráfico de dispersão acima ilustra a relação entre as variáveis `Intelligence %` e `Score for kids`. É possível observar uma correlação positiva moderada, sugerindo que raças mais inteligentes tendem a ser mais adequadas para crianças. Esta visualização auxilia na identificação de raças que combinam alta inteligência com boa compatibilidade familiar.
 
-```markdown
 ![Gráfico de Dispersão](Barras.png)
-```
 
 ### 5.3. Gráfico de Barras dos Grupos de Raças
 
