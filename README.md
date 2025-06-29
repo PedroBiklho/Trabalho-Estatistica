@@ -174,17 +174,18 @@ cat("IQR Score for Kids:", round(iqr_score, 2), "\n")
 
 ## 5\. Figuras Geradas e Explicações
 
-Insira aqui gráficos com breve explicação. Para adicionar imagens no Markdown do GitHub:
 
 ```markdown
-![Texto alternativo](caminho/para/imagem.png)
+![Gráfico de Histograma](Histograma.png)
 ```
-```markdown
-(caminho/para/imagem.png)
-```
+
 ### 5.1. Histograma da Expectativa de Vida
 
   * **Explicação:** Este histograma mostra a distribuição da variável `Longevity(Years)`.Observa-se que a maioria das raças tem expectativa de vida entre 10-13 anos, com uma distribuição aproximadamente normal e ligeiramente assimétrica à esquerda. Isso é importante para entender o perfil de longevidade das diferentes raças caninas e pode auxiliar futuros proprietários na escolha da raça.
+
+```markdown
+![Gráfico de Dispersão] (Grafico de Dispersao.png)
+```
 
 ### 5.2. Gráfico de Dispersão entre Inteligência e Adequação para Crianças
 
