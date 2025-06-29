@@ -183,9 +183,7 @@ cat("IQR Score for Kids:", round(iqr_score, 2), "\n")
 
   * **Explicação:** Este histograma mostra a distribuição da variável `Longevity(Years)`.Observa-se que a maioria das raças tem expectativa de vida entre 10-13 anos, com uma distribuição aproximadamente normal e ligeiramente assimétrica à esquerda. Isso é importante para entender o perfil de longevidade das diferentes raças caninas e pode auxiliar futuros proprietários na escolha da raça.
 
-```markdown
 ![Gráfico de Dispersão](Dispersao.png)
-```
 
 ### 5.2. Gráfico de Dispersão entre Inteligência e Adequação para Crianças
 
