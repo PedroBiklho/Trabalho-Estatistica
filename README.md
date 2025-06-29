@@ -175,23 +175,24 @@ cat("IQR Score for Kids:", round(iqr_score, 2), "\n")
 ## 5\. Figuras Geradas e Explicações
 
 
-![Gráfico de Histograma](Histograma.png)
-
 ### 5.1. Histograma da Expectativa de Vida
 
   * **Explicação:** Este histograma mostra a distribuição da variável `Longevity(Years)`.Observa-se que a maioria das raças tem expectativa de vida entre 10-13 anos, com uma distribuição aproximadamente normal e ligeiramente assimétrica à esquerda. Isso é importante para entender o perfil de longevidade das diferentes raças caninas e pode auxiliar futuros proprietários na escolha da raça.
 
-![Gráfico de Dispersão](Dispersao.png)
+
+![Gráfico de Histograma](Histograma.png)
 
 ### 5.2. Gráfico de Dispersão entre Inteligência e Adequação para Crianças
 
   * **Explicação:** O gráfico de dispersão acima ilustra a relação entre as variáveis `Intelligence %` e `Score for kids`. É possível observar uma correlação positiva moderada, sugerindo que raças mais inteligentes tendem a ser mais adequadas para crianças. Esta visualização auxilia na identificação de raças que combinam alta inteligência com boa compatibilidade familiar.
 
-![Gráfico de Dispersão](Barras.png)
+![Gráfico de Dispersão](Dispersao.png)
 
 ### 5.3. Gráfico de Barras dos Grupos de Raças
 
   * **Explicação:** Este gráfico de barras apresenta a frequência de cada grupo de raças no dataset. O grupo "sporting" possui a maior representatividade, seguido por "terrier" e "toy". Essa visualização é crucial para entender a distribuição das categorias e identificar possíveis desequilíbrios na amostra que podem afetar as análises estatísticas.
+
+![Gráfico de Dispersão](Barras.png)
 
 -----
 
